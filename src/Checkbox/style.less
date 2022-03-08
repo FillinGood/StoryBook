@@ -1,0 +1,23 @@
+.checkbox {
+    display: inline-flex;
+    cursor: pointer;
+    // *>** - поиск эл ** в эл *
+    .checkbox-mark>:first-child {
+        display: none;
+    }
+    .checkbox-mark>:last-child {
+        display: block;
+    }
+    &:hover {
+        .checkbox-mark>:first-child {
+            display: block;
+        }
+        .checkbox-mark>:last-child {
+            display: none;
+        }
+    }
+    .checkbox-mark {
+        margin-right: 5px;
+        user-select: none;
+    }
+}
