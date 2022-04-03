@@ -1,0 +1,31 @@
+.flip-card {
+  @size: 200px;
+
+  perspective: 1000px;
+  position: relative;
+  height: @size;
+  width: @size;
+  & > .inner {
+    position: relative;
+    height: @size;
+    width: @size;
+    transition: transform .5s ease-in-out;
+    transform-origin: 50% 50%;
+    transform-style: preserve-3d;
+    & > .front,
+    & > .back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      backface-visibility: hidden;
+    }
+    & > .back {
+      transform: rotateY(180deg);
+    }
+  }
+  &.flipped > .inner {
+    transform: rotateY(180deg);
+  }
+}
