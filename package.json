@@ -5,6 +5,7 @@
   "scripts": {
     "build": "build-storybook",
     "test": "jest",
+    "format": "prettier --write src",
     "coverage": "jest --coverage",
     "storybook": "start-storybook -p 9001 -c .storybook -s ./public"
   },

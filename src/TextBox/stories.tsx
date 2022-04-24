@@ -30,13 +30,16 @@ function Wrapper() {
     },
     [setValue]
   );
-  const onClear = React.useCallback((ref:React.RefObject<HTMLInputElement>) => {
-    setValue('');
-    ref.current?.focus();
-  }, [setValue]);
-  const onCopy = React.useCallback(()=>{
+  const onClear = React.useCallback(
+    (ref: React.RefObject<HTMLInputElement>) => {
+      setValue('');
+      ref.current?.focus();
+    },
+    [setValue]
+  );
+  const onCopy = React.useCallback(() => {
     navigator.clipboard.writeText(value);
-  }, [value])
+  }, [value]);
   return (
     <TextBox value={value} onChange={onChange}>
       <TextBox.Button icon={faCircleXmark} onClick={onClear} />
