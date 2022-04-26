@@ -4,13 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import TextBoxButton, { TextBoxButtonComponent } from './TextBoxButton';
 import './style.less';
 
+type onChangeHandler = (changed: string) => void;
+
 export interface TextBoxProps {
+  /** Value */
   value: string;
-  onChange?: (changed: string) => void;
+  /**
+   * Callback fired when Value changes
+   *
+   * @param {string} changed - new Value
+   */
+  onChange?: onChangeHandler;
+  /** Root element className */
   className?: string;
+  /**
+   * Buttons to display on the right.
+   *
+   * Recommended to use `<TextBox.Button>`
+   */
   children?: TextBoxButton[] | TextBoxButton;
 }
 
+/** Input field with custom buttons */
 function TextBoxComponent(props: TextBoxProps) {
   const ref = React.useRef<HTMLInputElement>(null);
   const buttons = React.useMemo(() => {
@@ -45,8 +60,10 @@ function TextBoxComponent(props: TextBoxProps) {
 // немного магии, заставляет реакт и тайпскрип верить, что
 // <TextBox.Button> = <TextBoxButtonComponent>
 type TextBoxWrap = typeof TextBoxComponent & {
+  /** Button for {@link TextBoxProps.children} */
   Button: typeof TextBoxButtonComponent;
 };
+/** Input field with custom buttons */
 const TextBox = TextBoxComponent as TextBoxWrap;
 TextBox.Button = TextBoxButtonComponent;
 export default TextBox;

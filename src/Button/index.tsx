@@ -5,12 +5,17 @@ import './style.less';
 import classNames from 'classnames';
 
 export interface ButtonProps {
+  /** Content */
   text: string;
-  icon: IconDefinition;
+  /** Optional FontAwesome Icon to display on the button */
+  icon?: IconDefinition;
+  /** Callback fired on click */
   onClick?: () => void;
+  /** If `true` - button does not react on click */
   disabled?: boolean;
 }
 
+/** Simple Button with icon and content */
 export default function Button(props: ButtonProps) {
   const { text, icon, onClick, disabled } = props;
   const Clicked = React.useCallback(() => {
@@ -20,7 +25,7 @@ export default function Button(props: ButtonProps) {
   }, [onClick, disabled]);
   return (
     <div className={classNames('button', { disabled })} onClick={Clicked}>
-      <FontAwesomeIcon icon={icon} className="button-icon" />
+      {icon && <FontAwesomeIcon icon={icon} className="button-icon" />}
       <div>{text}</div>
     </div>
   );

@@ -6,8 +6,9 @@ const meta: Meta = {
   title: 'Checkbox',
   component: Checkbox,
   argTypes: {
+    checked: { defaultValue: false },
     children: { type: 'string' },
-    onChange: { action: 'changed' }
+    onChange: { action: 'changed', table: { disable: true } }
   }
 };
 export default meta;

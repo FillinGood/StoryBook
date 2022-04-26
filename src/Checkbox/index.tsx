@@ -11,8 +11,13 @@ import {
 import './style.less';
 
 export interface CheckboxProps extends React.PropsWithChildren<unknown> {
+  /** Checkbox state
+   *
+   * If `true` - Checkbox is checked
+   */
   checked?: boolean;
   // такой тип описывает функцию с одним параметром (boolean) и любым возвращаемым типом
+  /** Callback fired on state changed */
   onChange?: (checked: boolean) => void;
   // в эту пропу попадает то, что пишется внутри компонента (между <...> и </...>)
   // пишем "React.ReactNode | React.ReactNode[]" для любого кол-ва "потомков"
@@ -22,6 +27,7 @@ export interface CheckboxProps extends React.PropsWithChildren<unknown> {
   //children?: React.ReactNode | React.ReactNode[];
 }
 
+/** Simple Checkbox with optional content */
 export default function Checkbox(props: CheckboxProps) {
   const { checked, onChange, children } = props;
   const onClick = React.useCallback(() => {

@@ -14,12 +14,18 @@ const meta: Meta = {
         type: 'select'
       }
     },
+    disabled: {
+      defaultValue: false
+    },
     onClick: {
       action: 'click',
       table: {
         disable: true
       }
     }
+  },
+  args: {
+    text: 'Text'
   }
 };
 
